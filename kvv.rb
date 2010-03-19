@@ -24,7 +24,7 @@ module Kvv
     trains = page.root.css("tr:nth-child(even)").to_a
     trains.reject! { |r| r.css(".dmDeparture").empty? }
     i = 0
-    trains.reject! { |r| (i += 1).modulo(2) == 1 }
+    trains.reject! { |r| (i += 1).odd? }
     
     trains.map do |row|
       Ride.new.tap do |ride|
