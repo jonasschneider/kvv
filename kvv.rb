@@ -1,6 +1,8 @@
 require 'mechanize'
 require "haml"
+
 module Kvv
+  COLORS = { "S5" => "#f69897", "S2" => "#9f66aa", "6" => "#7fc241", "3" => "#947138" }
   class Ride < Struct.new(:time, :line, :destination)
     def to_s
       "#{time}: #{line} -> #{destination}"
@@ -31,7 +33,7 @@ module Kvv
         row.css("td").each_with_index do |col, i|
           case i
           when 0
-            ride.time = col.css(".dmDeparture").first.content.gsub("\302\240", " ").strip
+            ride.time = Time.parse(col.css(".dmDeparture").first.content.gsub("\302\240", " ").strip)
           when 2
             ride.line = col.content.strip.match(/.\d*/)[0]
           when 3

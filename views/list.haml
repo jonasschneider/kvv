@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %link{ :rel => "stylesheet", :href => "/style.css" }
+  %body
+    - @rides.each do |ride|
+      .ride
+        %span.line{line_style(ride.line)}= ride.line
+        %span.text
+          - delta = (ride.time - Time.now).to_i / 60
+          - if delta > 0
+            in
+            %strong= delta
+            == Minute#{delta != 1 ? 'n' : ''}
+          - elsif delta == 0
+            %strong jetzt
