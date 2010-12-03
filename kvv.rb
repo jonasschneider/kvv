@@ -1,5 +1,5 @@
 require 'mechanize'
-
+require "haml"
 module Kvv
   class Ride < Struct.new(:time, :line, :destination)
     def to_s
