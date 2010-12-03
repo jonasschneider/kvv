@@ -33,7 +33,7 @@ module Kvv
           when 0
             ride.time = col.css(".dmDeparture").first.content.gsub("\302\240", " ").strip
           when 2
-            ride.line = col.content.strip
+            ride.line = col.content.strip.match(/.\d*/)[0]
           when 3
             ride.destination = col.content.strip
           end
