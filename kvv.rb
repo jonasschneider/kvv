@@ -37,6 +37,7 @@ module Kvv
           when 2
             ride.line = col.content.strip.match(/.\d*/)[0]
           when 3
+            puts col.content
             ride.destination = col.content.strip
           end
         end

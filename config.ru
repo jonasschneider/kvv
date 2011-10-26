@@ -3,7 +3,7 @@ require 'sinatra'
 require 'haml'
 require "sass"
 
-require 'kvv'
+require './kvv'
 
 before do
   content_type 'text/html', :charset => 'utf-8'
